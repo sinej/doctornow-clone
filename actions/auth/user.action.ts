@@ -6,3 +6,10 @@ export const getUser = async () => {
 
     return user?.data?.user;
 }
+
+export const getProfileById = async ({serverComponent = false, userId = ""}) => {
+    const supabase = await createServerSideClient();
+    const profile = await supabase.from("profiles").select("*").eq("id", userId);
+
+    return profile?.data?.[0];
+}

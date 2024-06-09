@@ -4,7 +4,11 @@ import React from 'react';
 import useTodosController from "../hooks/useTodosController";
 import TodoList from "@/components/ui/TodoList";
 
-const TodoContainer = () => {
+interface TodoContainerProps {
+    ownerUserId?: string;
+}
+
+const TodoContainer = ({ownerUserId}: TodoContainerProps) => {
     const {
         loading,
         todos,
@@ -12,12 +16,11 @@ const TodoContainer = () => {
         handleUpdateTodos,
         handleDeleteTodos,
         handleSearchTodos,
-    } = useTodosController();
+    } = useTodosController(ownerUserId);
 
     return (
         <div>
-            <TodoList sharedUserFullName="gasina_eunji"
-                      owerUserId="123123"
+            <TodoList ownerUserId={ownerUserId}
                       loading={loading}
                       todoListData={todos}
                       isReadOnly={false}
