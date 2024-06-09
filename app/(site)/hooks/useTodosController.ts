@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {
     createTodos,
     deleteTodosSoft,
@@ -14,22 +14,23 @@ const useTodosController = (ownerUserId = "") => {
     const [loading, setLoading] = useState(true);
     const [todos, setTodos] = useState<TodoDto[]>([]);
 
-    const handleGetTodos = async () => {
-        setLoading(true);
-        try {
-            const resultTodos = await getTodosByUserId(ownerUserId);
-            if (resultTodos) setTodos(resultTodos);
+    const handleGetTodos = useCallback(
+        async () => {
+            setLoading(true);
+            try {
+                const resultTodos = await getTodosByUserId(ownerUserId);
+                if (resultTodos) setTodos(resultTodos);
 
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
-        }
-    };
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setLoading(false);
+            }
+        }, [ownerUserId]);
 
     useEffect(() => {
         handleGetTodos();
-    }, []);
+    }, [handleGetTodos]);
 
     // 비어있는 todo 생성
     const handleCreateEmptyTodos = async () => {
@@ -51,15 +52,15 @@ const useTodosController = (ownerUserId = "") => {
 
     // todo 검색
     const handleSearchTodos = async (terms: string) => {
-        if(terms) {
+        if (terms) {
             const todoResult = await getTodosBySearch(terms);
-            if(todoResult) setTodos(todoResult);
+            if (todoResult) setTodos(todoResult);
         } else {
             await handleGetTodos();
         }
     };
 
-    return { loading, todos, handleCreateEmptyTodos, handleUpdateTodos, handleDeleteTodos, handleSearchTodos };
+    return {loading, todos, handleCreateEmptyTodos, handleUpdateTodos, handleDeleteTodos, handleSearchTodos};
 
 };
 
