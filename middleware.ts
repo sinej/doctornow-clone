@@ -1,7 +1,7 @@
 import {NextRequest, NextResponse} from "next/server";
 
 const COOKIE_COUNTER = 'cookie-counter'
-export function middleare(request: NextRequest) {
+export function middleware(request: NextRequest) {
     const response = NextResponse.next();
 
     if(request.cookies.get(COOKIE_COUNTER)?.value) {

@@ -57,7 +57,7 @@ const TodoList = ({
                 {(todoListData ?? []).map((todo) =>
                   <TodoListItem key={todo?.id}
                                 {...todo}
-                                onDelete={() => {}}
+                                onDelete={onDelete}
                                 onUpdate={onUpdate}
                   />
                 )}

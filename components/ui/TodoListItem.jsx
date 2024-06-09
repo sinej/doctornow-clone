@@ -17,7 +17,7 @@ const TodoListItem = ({id, content, onDelete, onUpdate}) => {
     setIsEdit(false);
   }
 
-  const handleDelete = (id) => {
+  const handleDelete = () => {
     onDelete(id);
   }
 
@@ -42,10 +42,12 @@ const TodoListItem = ({id, content, onDelete, onUpdate}) => {
         }
         <div className="self-end w-fit hidden group-hover:flex gap-2">
           {isEdit ?
-            <div className="h-11 w-11 flex items-center justify-center cursor-pointer">
+            <div className="h-11 w-11 flex items-center justify-center cursor-pointer"
+                 onClick={handleFinishEdit}
+            >
               <CiCircleCheck size={30} />
             </div> :
-            <div onClick={handleFinishEdit}
+            <div onClick={handleStartEdit}
                  className="h-11 w-11 flex items-center justify-center cursor-pointer"
             >
               <CiEdit size={30} />

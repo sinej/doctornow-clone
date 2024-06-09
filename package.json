@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate": "graphql-codegen"
+    "generate": "graphql-codegen",
+    "supabase:gen": "npx supabase gen types typescript --project-id 'wywwguksjozvyhthvuww' --schema public > types/supabase.ts"
   },
   "dependencies": {
     "@supabase/auth-ui-react": "^0.4.7",

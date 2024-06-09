@@ -1,5 +1,5 @@
 
-// RouterHandler, RSC, Middleare, ServerActions
+// RouterHandler, RSC, Middleware, ServerActions
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { Database } from "@/types/supabase";

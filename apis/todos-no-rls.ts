@@ -44,7 +44,7 @@ export const getTodosBySearch = async (terms: string) => {
     return result.data;
 }
 
-// TodoList 생성하기
+// Todo List 생성하기
 export const createTodos = async (content: string) => {
     const supabase = createSupabaseBrowserClient();
     const result = await supabase
@@ -57,7 +57,7 @@ export const createTodos = async (content: string) => {
     return result.data;
 }
 
-// TodoList 업데이트
+// Todo List 업데이트
 export const updateTodos = async (id: number, content: string) => {
     const supabase = createSupabaseBrowserClient();
     const result = await supabase
@@ -72,7 +72,7 @@ export const updateTodos = async (id: number, content: string) => {
     return result.data;
 }
 
-// TodoList softDelete
+// Todo List softDelete
 export const deleteTodosSoft = async (id: number) => {
     const supabase = createSupabaseBrowserClient();
     const result = await supabase
@@ -86,7 +86,7 @@ export const deleteTodosSoft = async (id: number) => {
     return result.data;
 }
 
-// TodoList hardDelete
+// Todo List hardDelete
 export const deleteTodosHard = async (id: number) => {
     const supabase = createSupabaseBrowserClient();
     const result = await supabase
