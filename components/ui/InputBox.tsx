@@ -6,7 +6,7 @@ import {AiOutlinePlus} from "react-icons/ai";
 
 const InputBox = ({
                       onCreate = () => {},
-                      onSearch = (terms) => {},
+                      onSearch = (terms: string) => {},
                   }) => {
     const [userSearchInput, setUserSearchInput] = useState("");
 
